@@ -1,4 +1,4 @@
-const { execSync } = require('child_process')
+const { exec, execSync } = require('child_process')
 
 module.exports = function(app) {
     app.all('*', (req, res, next) => {
@@ -11,9 +11,10 @@ module.exports = function(app) {
 
             execSync('git pull', { cwd: targetDir })
             execSync('docker image build -t bison-api .', { cwd: targetDir })
-            execSync('docker container run --rm -p 8081:8081 bison-api', { cwd: targetDir })
-            res.json({
-                message: `${req.body}`
+            exec('docker container run --rm -p 8081:8081 bison-api', { cwd: targetDir }, (error, stdout, stderr) => {
+                res.json({
+                    message: `${req.body}`
+                })
             })
         })
 
@@ -23,9 +24,10 @@ module.exports = function(app) {
             
             execSync('git pull', { cwd: targetDir })
             execSync('docker image build -t bison-h5 .', { cwd: targetDir })
-            execSync('docker container run --rm -p 8080:8080 bison-h5', { cwd: targetDir })
-            res.json({
-                message: `${req.body}`
+            exec('docker container run --rm -p 8080:8080 bison-h5', { cwd: targetDir }, (error, stdout, stderr) => {
+                res.json({
+                    message: `${req.body}`
+                })
             })
         })
 }
