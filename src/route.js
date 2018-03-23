@@ -16,7 +16,8 @@ module.exports = function(app) {
             })
 
             execSync('docker image build -t bison-api .', { cwd: targetDir })            
-            execSync('docker container run --rm -it -p 8081:8081 bison-api', { cwd: targetDir })
+            execSync('docker container kill bison-api', { cwd: targetDir })
+            execSync('docker container run --name bison-api --rm -p 8081:8081 bison-api', { cwd: targetDir })
             execSync('docker image prune')
         })
 
@@ -31,7 +32,8 @@ module.exports = function(app) {
             })
 
             execSync('docker image build -t bison-h5 .', { cwd: targetDir })
-            execSync('docker container run --rm -p 8080:8080 bison-h5', { cwd: targetDir })
+            execSync('docker container kill bison-h5', { cwd: targetDir })
+            execSync('docker container run --name bison-h5 --rm -p 8080:8080 bison-h5', { cwd: targetDir })
             execSync('docker image prune')
         })
 }
