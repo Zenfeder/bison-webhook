@@ -12,7 +12,8 @@ module.exports = function(app) {
             execSync('git pull', { cwd: targetDir })
 
             execSync('npm i', { cwd: targetDir })
-            execSync('npm run start', { cwd: targetDir })
+            execSync('pm2 restart npm --name bison-api -- start', { cwd: targetDir })
+            // execSync('npm run start', { cwd: targetDir })
 
             res.json({
                 message: '发布成功'
@@ -31,7 +32,9 @@ module.exports = function(app) {
             execSync('git pull', { cwd: targetDir })
 
             execSync('npm i', { cwd: targetDir })
-            execSync('npm run deploy', { cwd: targetDir })
+            execSync('npm run build', { cwd: targetDir })
+            execSync('pm2 restart npm --name bison-h5 -- start', { cwd: targetDir })
+            // execSync('npm run deploy', { cwd: targetDir })
 
             res.json({
                 message: '构建、发布成功'
