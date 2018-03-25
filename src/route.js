@@ -11,14 +11,17 @@ module.exports = function(app) {
 
             execSync('git pull', { cwd: targetDir })
 
+            execSync('npm i', { cwd: targetDir })
+            execSync('npm run start', { cwd: targetDir })
+
             res.json({
-                message: `${req.body}`
+                message: '发布成功'
             })
 
-            execSync('docker image build -t bison-api .', { cwd: targetDir })            
-            execSync('docker container kill bison-api', { cwd: targetDir })
-            execSync('docker container run --name bison-api --rm -p 8081:8081 bison-api', { cwd: targetDir })
-            execSync('docker image prune')
+            // execSync('docker image build -t bison-api .', { cwd: targetDir })            
+            // execSync('docker container kill bison-api', { cwd: targetDir })
+            // execSync('docker container run --name bison-api --rm -p 8081:8081 bison-api', { cwd: targetDir })
+            // execSync('docker image prune')
         })
 
     app.route('/bison-h5')
@@ -27,13 +30,16 @@ module.exports = function(app) {
             
             execSync('git pull', { cwd: targetDir })
 
+            execSync('npm i', { cwd: targetDir })
+            execSync('npm run deploy', { cwd: targetDir })
+
             res.json({
-                message: `${req.body}`
+                message: '构建、发布成功'
             })
 
-            execSync('docker image build -t bison-h5 .', { cwd: targetDir })
-            execSync('docker container kill bison-h5', { cwd: targetDir })
-            execSync('docker container run --name bison-h5 --rm -p 8080:8080 bison-h5', { cwd: targetDir })
-            execSync('docker image prune')
+            // execSync('docker image build -t bison-h5 .', { cwd: targetDir })
+            // execSync('docker container kill bison-h5', { cwd: targetDir })
+            // execSync('docker container run --name bison-h5 --rm -p 8080:8080 bison-h5', { cwd: targetDir })
+            // execSync('docker image prune')
         })
 }
