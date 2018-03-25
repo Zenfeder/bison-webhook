@@ -12,7 +12,7 @@ module.exports = function(app) {
             execSync('git pull', { cwd: targetDir })
 
             execSync('npm i', { cwd: targetDir })
-            execSync('pm2 restart npm --name bison-api -- start', { cwd: targetDir })
+            execSync('pm2 restart bison-api', { cwd: targetDir })
             // execSync('npm run start', { cwd: targetDir })
 
             res.json({
@@ -33,7 +33,7 @@ module.exports = function(app) {
 
             execSync('npm i', { cwd: targetDir })
             execSync('npm run build', { cwd: targetDir })
-            execSync('pm2 restart npm --name bison-h5 -- start', { cwd: targetDir })
+            execSync('pm2 restart bison-h5', { cwd: targetDir })
             // execSync('npm run deploy', { cwd: targetDir })
 
             res.json({
