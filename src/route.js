@@ -31,14 +31,15 @@ module.exports = function(app) {
             
             execSync('git pull', { cwd: targetDir })
 
+            res.json({
+                message: '构建、发布成功'
+            })
+            
             execSync('npm i', { cwd: targetDir })
             execSync('npm run build', { cwd: targetDir })
             execSync('pm2 restart bison-h5', { cwd: targetDir })
             // execSync('npm run deploy', { cwd: targetDir })
 
-            res.json({
-                message: '构建、发布成功'
-            })
 
             // execSync('docker image build -t bison-h5 .', { cwd: targetDir })
             // execSync('docker container kill bison-h5', { cwd: targetDir })
