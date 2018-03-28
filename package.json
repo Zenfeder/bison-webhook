@@ -1,5 +1,5 @@
 {
-  "name": "bison-webhook",
+  "name": "ha-kafer-webhook",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Zenfeder/bison-webhook.git"
+    "url": "git+https://github.com/Zenfeder/ha-kafer-webhook.git"
   },
   "author": "陈果",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Zenfeder/bison-webhook/issues"
+    "url": "https://github.com/Zenfeder/ha-kafer-webhook/issues"
   },
-  "homepage": "https://github.com/Zenfeder/bison-webhook#readme",
+  "homepage": "https://github.com/Zenfeder/ha-kafer-webhook#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2"
